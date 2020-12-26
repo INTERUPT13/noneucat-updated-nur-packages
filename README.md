@@ -1,5 +1,6 @@
 # nur-packages
 Personal NUR repository.
+Issues: https://todo.sr.ht/~noneucat/noneucat
 
 ## Contents
 - **modules/pinephone:** PinePhone-specific modules.
