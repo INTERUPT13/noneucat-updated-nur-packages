@@ -4,6 +4,7 @@ with lib;
 
 let
   cfg = config.services.xserver.windowManager.sxmo;
+  sxmoPkgs = pkgs.nur.repos.noneucat.pinephone.sxmo;
 in
 
 {
@@ -16,17 +17,17 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.xserver.windowManager.session = with pkgs.nur.repos.noneucat.pinephone; [{
+    services.xserver.windowManager.session = with sxmoPkgs; [{
       name = "sxmo";
       desktopNames = [ "sxmo" ];
       start = ''
-        source ${sxmo.sxmo-xdm-config}/etc/profile.d/profilesxmo.sh
-        ${sxmo.sxmo-utils}/bin/sxmo_xinit.sh &
+        source ${sxmo-xdm-config}/etc/profile.d/profilesxmo.sh
+        ${sxmo-utils}/bin/sxmo_xinit.sh &
         waitPID=$!
       '';
     }];
 
-    environment.systemPackages = with pkgs.nur.repos.noneucat.pinephone.sxmo; [ 
+    environment.systemPackages = with sxmoPkgs; [ 
       lisgd 
       sxmo-dmenu
       sxmo-dwm
@@ -72,11 +73,11 @@ in
     systemd.services.ModemManager.enable = true;
 
     # sxmo-utils: utilities that need setuid
-    security.setuidPrograms = [
-      "sxmo_screenlock"
-      "sxmo_setpineled"
-      "sxmo_setpinebacklight"
-    ];
+    security.wrappers = {
+      sxmo_screenlock.source = "${sxmoPkgs.sxmo-utils}/bin/sxmo_screenlock";
+      sxmo_setpineled.source = "${sxmoPkgs.sxmo-utils}/bin/sxmo_setpineled";
+      sxmo_setpinebacklight.source = "${sxmoPkgs.sxmo-utils}/bin/sxmo_setpinebacklight";
+    };
   };
 }
 
