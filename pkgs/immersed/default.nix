@@ -1,6 +1,6 @@
 { stdenv, wrapGAppsHook, autoPatchelfHook, fetchurl, ffmpeg-full, p7zip
 , gtk3, gdk-pixbuf, glib, pango, cairo, fontconfig, libva
-, xorg, zlib, glibc, libpulseaudio, libGL, extraPkgs ? [] }:
+, xorg, zlib, glibc, libpulseaudio, libGL, libvaDriverName ? "iHD" }:
 
 stdenv.mkDerivation {
   pname = "Immersed";
@@ -39,7 +39,7 @@ stdenv.mkDerivation {
     xorg.libXtst
     xorg.libXxf86vm
     xorg.libSM
-  ] ++ extraPkgs;
+  ];
 
   unpackPhase = ''
     7z x $src 
@@ -65,6 +65,7 @@ stdenv.mkDerivation {
   preFixup = ''
     gappsWrapperArgs+=(
       --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib
+      --set-default LIBVA_DRIVER_NAME ${libvaDriverName} 
     )
   '';
 
