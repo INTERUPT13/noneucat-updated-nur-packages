@@ -1,4 +1,4 @@
-{ stdenv, dwm, fetchgit, patches ? [], conf ? null }:
+{ stdenv, lib, dwm, fetchgit, patches ? [], conf ? null }:
 
 (dwm.overrideAttrs (oldAttrs: rec {
   name = "sxmo-dwm-${version}";
@@ -18,8 +18,8 @@ sed -i "s@CC = cc@CC = $CC@g" config.mk
   meta = {
     homepage = "https://git.sr.ht/~mil/sxmo-dwm";
     description = "Dwm for sxmo";
-    license = stdenv.lib.licenses.mit;
-    maintainers = [ stdenv.lib.maintainers.noneucat ];
+    license = lib.licenses.mit;
+    maintainers = [ lib.maintainers.noneucat ];
     platforms = oldAttrs.meta.platforms; 
   };
 })).override {
