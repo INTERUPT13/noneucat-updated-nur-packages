@@ -1,4 +1,4 @@
-{ stdenv, fetchgit, st, pkgconfig
+{ stdenv, lib, fetchgit, st, pkgconfig
 , conf ? null, patches ? [], extraLibs ? [] }:
 
 (st.overrideAttrs (oldAttrs: rec {
@@ -19,8 +19,8 @@ sed -i "s@PKG_CONFIG = pkg-config@PKG_CONFIG = ${pkgconfig}/bin/pkg-config@g" co
   meta = {
     homepage = "https://git.sr.ht/~mil/sxmo-st";
     description = "St terminal emulator for sxmo";
-    license = stdenv.lib.licenses.mit;
-    maintainers = [ stdenv.lib.maintainers.noneucat ];
+    license = lib.licenses.mit;
+    maintainers = [ lib.maintainers.noneucat ];
     platforms = oldAttrs.meta.platforms; 
   };
 })).override {
