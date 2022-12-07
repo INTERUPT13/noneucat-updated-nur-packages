@@ -1,4 +1,4 @@
-{ stdenv, fetchgit, libX11 }:
+{ stdenv, lib, fetchgit, libX11 }:
 
 stdenv.mkDerivation rec {
   pname = "sxmo-utils";
@@ -45,8 +45,8 @@ stdenv.mkDerivation rec {
   meta = {
     homepage = "https://git.sr.ht/~mil/sxmo-utils";
     description = "Scripts and small C programs for sxmo";
-    license = stdenv.lib.licenses.mit;
-    maintainers = [ stdenv.lib.maintainers.noneucat ];
-    platforms = stdenv.lib.platforms.linux; 
+    license = lib.licenses.mit;
+    maintainers = [ lib.maintainers.noneucat ];
+    platforms = lib.platforms.linux; 
   };
 }
