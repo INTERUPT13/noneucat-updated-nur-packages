@@ -1,4 +1,4 @@
-{ stdenv, fetchgit, surf, patches ? null }:
+{ stdenv, lib, fetchgit, surf, patches ? null }:
 
 (surf.overrideAttrs (oldAttrs: rec {
   pname = "sxmo-surf";
@@ -13,8 +13,8 @@
   meta = {
     homepage = "https://git.sr.ht/~mil/sxmo-surf";
     description = "The suckless surf browser fork for sxmo";
-    license = stdenv.lib.licenses.mit;
-    maintainers = [ stdenv.lib.maintainers.noneucat ];
+    license = lib.licenses.mit;
+    maintainers = [ lib.maintainers.noneucat ];
     platforms = oldAttrs.meta.platforms; 
   };
 })).override {
