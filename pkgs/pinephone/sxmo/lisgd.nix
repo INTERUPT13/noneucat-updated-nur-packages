@@ -1,4 +1,4 @@
-{ stdenv, fetchgit, libX11, libinput
+{ stdenv, fetchgit, libX11, libinput, lib
 , patches ? [] }:
 let 
   patches' = patches;
@@ -29,8 +29,8 @@ in stdenv.mkDerivation rec {
   meta = {
     homepage = "https://git.sr.ht/~mil/lisgd";
     description = "Libinput synthetic gesture daemon";
-    license = stdenv.lib.licenses.mit;
-    maintainers = [ stdenv.lib.maintainers.noneucat ];
-    platforms = stdenv.lib.platforms.linux; 
+    license = lib.licenses.mit;
+    maintainers = [ lib.maintainers.noneucat ];
+    platforms = lib.platforms.linux; 
   };
 }
