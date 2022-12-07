@@ -13,8 +13,8 @@
   meta = {
     homepage = "https://git.sr.ht/~mil/sxmo-dmenu";
     description = "Dmenu for sxmo";
-    license = stdenv.lib.licenses.mit;
-    maintainers = [ stdenv.lib.maintainers.noneucat ];
+    license = lib.licenses.mit;
+    maintainers = [ lib.maintainers.noneucat ];
     platforms = oldAttrs.meta.platforms; 
   };
 })).override {
