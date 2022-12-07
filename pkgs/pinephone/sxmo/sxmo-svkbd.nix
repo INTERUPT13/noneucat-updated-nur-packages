@@ -1,7 +1,7 @@
-{ stdenv, fetchgit, libX11, libXft, libXtst, libXi, libXinerama
+{ stdenv, lib, fetchgit, libX11, libXft, libXtst, libXi, libXinerama
 , conf ? null, patches ? [], layouts ? ["sxmo"] }:
 
-with stdenv.lib;
+with lib;
 
 stdenv.mkDerivation {
   pname = "sxmo-svkbd";
