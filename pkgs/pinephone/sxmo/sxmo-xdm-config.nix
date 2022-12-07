@@ -26,8 +26,8 @@ stdenv.mkDerivation rec {
   meta = {
     homepage = "https://git.sr.ht/~mil/sxmo-xdm-config";
     description = "XDM configuration for sxmo";
-    license = stdenv.lib.licenses.mit;
-    maintainers = [ stdenv.lib.maintainers.noneucat ];
-    platforms = stdenv.lib.platforms.all; 
+    license = lib.licenses.mit;
+    maintainers = [ lib.maintainers.noneucat ];
+    platforms = lib.platforms.all; 
   };
 }
